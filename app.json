@@ -1,36 +1,48 @@
 {
   "expo": {
-    "name": "mobile-ts",
-    "slug": "mobile-ts",
+    "newArchEnabled": true,
+    "name": "Aduanku by TPDCOM",
+    "slug": "Aduanku_by_TPDCOM",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/iconv2.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/aduanku.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#5e7dbd"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/iconv2.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "splash": {
+        "image": "./assets/images/aduanku.png"
+      },
+      "package": "com.ferdianyusuf.Aduanku_by_TPDCOM"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/iconv2.png"
     },
-    "plugins": [
-      "expo-router"
-    ],
+    "plugins": ["expo-router"],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "87b6683b-3729-41db-b484-f0d9488b5200"
+      }
+    },
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/87b6683b-3729-41db-b484-f0d9488b5200"
     }
   }
 }
