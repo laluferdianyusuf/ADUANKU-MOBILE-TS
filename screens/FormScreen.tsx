@@ -401,7 +401,7 @@ export const FormScreen: React.FC<FormScreenProps> = () => {
                 className="flex-1 bg-custom-purple-2 p-3 rounded-xl"
               >
                 <Text className="font-josefin-bold text-center text-white">
-                  Previous
+                  Sebelumnya
                 </Text>
               </Pressable>
             )}
@@ -411,7 +411,7 @@ export const FormScreen: React.FC<FormScreenProps> = () => {
                 className="flex-1 bg-custom-purple-2 p-3 rounded-xl"
               >
                 <Text className="font-josefin-bold text-center text-white">
-                  Next
+                  Selanjutnya
                 </Text>
               </Pressable>
             ) : (
