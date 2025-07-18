@@ -1,4 +1,7 @@
-node_modules/
+android
+.vscode
+node_modules
+
 .expo/
 dist/
 npm-debug.*
@@ -18,3 +21,4 @@ web-build/
 expo-env.d.ts
 # @end expo-cli
 package-lock.json
+

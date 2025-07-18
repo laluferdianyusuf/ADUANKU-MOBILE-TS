@@ -13,6 +13,7 @@ import {
   Text,
   ToastAndroid,
   View,
+  ActivityIndicator,
 } from "react-native";
 import { useDispatch } from "react-redux";
 import { z } from "zod";
@@ -29,6 +30,7 @@ export const LoginScreen: React.FC = ({}) => {
   const backPressCount = useRef(0);
   const backPressTimer = useRef<NodeJS.Timeout | null>(null);
   const isFocused = useIsFocused();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleBackPress = () => {
@@ -85,6 +87,7 @@ export const LoginScreen: React.FC = ({}) => {
   });
 
   const handleLogin = async (data: LoginFormData) => {
+    setIsLoading(true);
     try {
       await dispatch(login(data)).unwrap();
       router.push("/(tabs)");
@@ -100,6 +103,8 @@ export const LoginScreen: React.FC = ({}) => {
       } else {
         setApiError("An unexpected error occurred.");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -165,9 +170,18 @@ export const LoginScreen: React.FC = ({}) => {
             </View>
             <Pressable
               onPress={handleSubmit(handleLogin)}
-              className="bg-custom-purple-1 p-5 rounded-xl"
+              className={`bg-custom-purple-1 p-5 rounded-xl ${
+                isLoading ? "opacity-60" : ""
+              }`}
+              disabled={isLoading}
             >
-              <Text className="font-josefin text-white text-center">Masuk</Text>
+              {isLoading ? (
+                <ActivityIndicator color="#ffffff" />
+              ) : (
+                <Text className="font-josefin text-white text-center">
+                  Masuk
+                </Text>
+              )}
             </Pressable>
           </View>
           <View className="gap-4">

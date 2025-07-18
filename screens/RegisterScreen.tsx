@@ -2,7 +2,13 @@ import { CustomInput } from "@/components";
 import { ThemedView } from "@/components/ThemedView";
 import { router } from "expo-router";
 import React, { useState } from "react";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  ActivityIndicator,
+} from "react-native";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
@@ -23,6 +29,7 @@ interface RegisterFormData {
 export const RegisterScreen: React.FC<RegisterScreenProps> = ({ isAdmin }) => {
   const dispatch: AppDispatch = useDispatch();
   const [apiError, setApiError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const registerSchema = z.object({
     email: z
@@ -52,6 +59,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ isAdmin }) => {
   });
 
   const handleRegister = async (data: RegisterFormData) => {
+    setIsLoading(true);
     try {
       if (isAdmin === "true") {
         const res = await dispatch(registerAdmin(data)).unwrap();
@@ -77,6 +85,8 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ isAdmin }) => {
       } else {
         setApiError("An unexpected error occurred.");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -166,13 +176,21 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ isAdmin }) => {
                 )}
               />
             </View>
+
             <Pressable
               onPress={handleSubmit(handleRegister)}
-              className="bg-custom-purple-1 p-5 rounded-xl"
+              className={`bg-custom-purple-1 p-5 rounded-xl ${
+                isLoading ? "opacity-60" : ""
+              }`}
+              disabled={isLoading}
             >
-              <Text className="font-josefin text-white text-center">
-                Daftar
-              </Text>
+              {isLoading ? (
+                <ActivityIndicator color="#ffffff" />
+              ) : (
+                <Text className="font-josefin text-white text-center">
+                  Daftar
+                </Text>
+              )}
             </Pressable>
           </View>
           <View className="gap-4">
