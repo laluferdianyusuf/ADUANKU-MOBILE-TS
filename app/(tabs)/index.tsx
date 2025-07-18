@@ -239,7 +239,7 @@ export default function HomeScreen() {
               ) : null}
             </View>
           </View>
-          <View className="flex-1">
+          <View className="flex-1 bg-white px-6">
             <FlatList
               data={filteredCategory}
               renderItem={({ item }) => (
@@ -248,9 +248,15 @@ export default function HomeScreen() {
                   handlePress={() => handlePressItem(item)}
                 />
               )}
-              keyExtractor={(item) => item.id}
+              // keyExtractor={(item) => item.id}
               contentContainerClassName="gap-4 py-5"
               showsVerticalScrollIndicator={false}
+              keyExtractor={(item) => item.id}
+              numColumns={2}
+              columnWrapperStyle={{ gap: 5 }}
+              contentContainerStyle={{
+                rowGap: 5,
+              }}
             />
           </View>
         </React.Fragment>

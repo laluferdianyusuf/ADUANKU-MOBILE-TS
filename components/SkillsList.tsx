@@ -1,8 +1,6 @@
 import React from "react";
-import { View, Text, Pressable } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { View, Text } from "react-native";
 import { useTheme } from "@react-navigation/native";
-import { formatDate } from "@/utils/datetime";
 
 interface SkillsListCategory {
   id: number;
