@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["borndate", "josefin", "Pressable"]
+  "cSpell.words": ["borndate", "josefin", "Pressable"],
+  "java.compile.nullAnalysis.mode": "automatic"
 }

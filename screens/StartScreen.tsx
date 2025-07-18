@@ -1,7 +1,6 @@
 import { ThemedView } from "@/components/ThemedView";
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { router } from "expo-router";
 import React, { useState } from "react";
 import { Text, View, Image, Pressable } from "react-native";
 import Swiper from "react-native-swiper";
